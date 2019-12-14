@@ -49,9 +49,7 @@
         const titleList = document.querySelector(optTitleListSelector);
         console.log(titleList);
         
-        function clearMessages(){
-            titleList.innerHTML = '';
-    } clearMessages();
+  
     /* for each article */
 
     /* get the article id */
@@ -65,5 +63,7 @@
     /* insert link into titleList */
     
     }
+    
     generateTitleLinks();
+    
 }
