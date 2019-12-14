@@ -7,7 +7,7 @@
 const titleClickHandler = function(event){
     console.log('Link was clicked!'),
     console.log(event);
-}
+
 /* remove class 'active' form all articles links */
 const activeLinks = document.querySelectorAll('.titles a.active');
 for(let activeLink of activeLinks){
@@ -17,8 +17,8 @@ for(let activeLink of activeLinks){
 
 /* remove class 'active' from all articles */
 const activeArticles = document.querySelectorAll('.posts article.active');
-for(let activeArticles of activeArticle){
-    activeLink.classList.remove('active');
+for(let activeArticle of activeArticles){
+    activeArticle.classList.remove('active');
 }
 
 
@@ -27,10 +27,10 @@ for(let activeArticles of activeArticle){
 /* find yhe correct article using the selector (value of  'href' atrribute) */
 
 /* add class 'active' to the correct article */
-
-/*const links = document.querySelectorAll('.titles a');
+}
+const links = document.querySelectorAll('.titles a');
 
 for(let link of links){
     link.addEventListener('click', titleClickHandler);
     
-}*/
+}
