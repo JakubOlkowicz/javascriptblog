@@ -8,7 +8,7 @@ const optArticleSelector = '.post',
   optCloudClassCount = 4,
   optCloudClassPrefix = 'tag-size';
 
-{const titleClickHandler = function(event)
+const titleClickHandler = function(event)
 {
   event.preventDefault();
   const clickedElement = this;
@@ -80,7 +80,7 @@ function calculateTagsClass(count, params) {
   const  normalizedMax = params.max - params.min;
   const  perecentage = normalizedCount / normalizedMax;
   const  classNumber = Math.floor( perecentage * (optCloudClassCount - 1) + 1);
-    
+  return optCloudClassPrefix+classNumber;
 }   
 function generateTags() {
   let allTags = {};
@@ -111,7 +111,7 @@ function generateTags() {
   console.log('tagsParams:', tagsParams);
   let allTagsHTML = '';
   for(let tag in allTags){
-    allTagsHTML  += '<li><a href="#tag-' + tag + ' class=".' + calculateTagsClass(optCloudClassPrefix) + '">' + tag + ' (' + allTags[tag] + ') </li>';
+    allTagsHTML  += '<li><a href="#tag-' + tag + ' " class="' + calculateTagsClass(allTags[tag], tagsParams) + '">' + tag + ' (' + allTags[tag] + ') </li>';
     //tag + ' (' + allTags[tag] + ') ';
     console.log(allTagsHTML);
   }
@@ -159,7 +159,7 @@ function addClickListenersToTags(){
   }   
 }
 addClickListenersToTags();
-}
+
 
 function generateAuthors(){
   const articles = document.querySelectorAll(optArticleSelector);
