@@ -52,7 +52,7 @@ body {
 .sidebar, .posts {
   background: #fff;
   margin-right: 10px;
-  padding: 40px;
+  padding: 35px;
   border: 1px solid #444;
   border-radius: 5px;
 }
@@ -67,6 +67,26 @@ body {
 }
 
 /* Lists */
+.tag-size1 {
+  font-size: 14px;
+  display: inline;
+}
+
+.tag-size2 {
+  font-size: 18px;
+  display: inline;
+}
+
+.tag-size3 {
+  font-size: 22px;
+  display: inline;
+}
+
+.tag-size4 {
+  font-size: 26px;
+  display: inline;
+}
+
 .list {
   list-style-type: none;
   margin: 0;

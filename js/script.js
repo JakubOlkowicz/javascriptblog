@@ -6,7 +6,8 @@ const optArticleSelector = '.post',
   optArticleAuthorSelector = '.post-author',
   optTagsListSelector = '.tags .list',
   optCloudClassCount = 4,
-  optCloudClassPrefix = 'tag-size';
+  optCloudClassPrefix = 'tag-size',
+  optAuthorListSelector = '.list .authors';
 
 const titleClickHandler = function(event)
 {
@@ -111,7 +112,7 @@ function generateTags() {
   console.log('tagsParams:', tagsParams);
   let allTagsHTML = '';
   for(let tag in allTags){
-    allTagsHTML  += '<li><a href="#tag-' + tag + ' " class="' + calculateTagsClass(allTags[tag], tagsParams) + '">' + tag + ' (' + allTags[tag] + ') </li>';
+    allTagsHTML  += '<li><a href="#tag-' + tag + ' " class="' + calculateTagsClass(allTags[tag], tagsParams) + '">' + tag + '</li>';
     //tag + ' (' + allTags[tag] + ') ';
     console.log(allTagsHTML);
   }
@@ -162,16 +163,31 @@ addClickListenersToTags();
 
 
 function generateAuthors(){
+  let allAuthors = {};
   const articles = document.querySelectorAll(optArticleSelector);
   for(let article of articles){
     const authorWrapper = article.querySelector(optArticleAuthorSelector);
-    const articleAuthor = article.getAttribute('data-author');
+    const author = article.getAttribute('data-author');
     let html = '';
     const linkHTML =
-        '<p class="post-author"><a href="#author-' + articleAuthor + '">by '+ articleAuthor +'<a></p>';
+        '<p class="post-author"><a href="#author-' + author + '">by '+ author +'<a></p>';
     html = linkHTML + html;
+    if(!allAuthors.hasOwnProperty(author)){
+      allAuthors[author] = 1;
+    }
+    else {
+      allAuthors[author]++;``
+    }
     authorWrapper.innerHTML = html;
   }
+  const authorList = document.querySelector('.authors');
+  console.log(authorList);
+  const authorParams = calculateTagsParams(allAuthors);
+  let allAuthorsHTML = '';
+  for (let author in allAuthors){
+    allAuthorsHTML += '<li><a href="#author-' + author + '">' + author + '(' + allAuthors[author] + ')</li>';
+  }
+  authorList.innerHTML = allAuthorsHTML;
 }
 generateAuthors();
 function authorClickHandler(event) {
